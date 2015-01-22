@@ -1,6 +1,6 @@
 module Lipisha
   class ConfirmTransaction
-    CALL_URL = 'https://lipisha.com/payments/accounts/index.php/v2/api/confirm_transaction'
+    CALL_URL = 'https://www.lipisha.com/payments/accounts/index.php/v2/api/confirm_transaction'
 
     attr_accessor :transaction
     attr_accessor :success, :response_body, :response, :status_code, :status_description, :transaction_reference
