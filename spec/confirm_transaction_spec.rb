@@ -72,7 +72,7 @@ describe Lipisha::ConfirmTransaction do
             "status_description": "description",
             "status": "SUCCESS"
           },
-          "content": [{
+          "content": {
     	      "transaction": "ABCI23564",
             "transaction_type": "Payment",
             "transaction_method": "Paybill (M-Pesa)",
@@ -85,7 +85,7 @@ describe Lipisha::ConfirmTransaction do
             "transaction_name": "JOHN JANE DOE",
             "transaction_mobile_number": "254722002222",
             "transaction_email": ""
-          }]
+          }
         }})
       end
       subject { Lipisha::ConfirmTransaction.new(:transaction => 'ABCI23564') }

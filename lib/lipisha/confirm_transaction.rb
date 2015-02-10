@@ -19,7 +19,7 @@ module Lipisha
       self.success            = status['status'] == 'SUCCESS'
       if response['content'] && !response['content'].empty?
         #this assumes that we'll be only checking one confirmation code at a time
-        content = response['content'].first
+        content = response['content']
       else
         content = {}
       end
