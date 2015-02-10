@@ -43,7 +43,6 @@ describe Lipisha::ConfirmTransaction do
   end
 
   describe 'confirming transaction' do
-
     describe "invalid request" do
       let(:response) do
         double(:body => %Q{{
