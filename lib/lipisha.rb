@@ -9,7 +9,7 @@ module Lipisha
   config_accessor :logger
 
   autoload :SendMoney, 'lipisha/send_money'
-  autoload :ConfirmTransaction, 'lipisha/confirm_transaction'
+  autoload :TransactionStatus, 'lipisha/transaction_status'
 end
 
 Lipisha.configure do |c|

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe Lipisha::ConfirmTransaction do
-  subject { Lipisha::ConfirmTransaction.new({
+describe Lipisha::TransactionStatus do
+  subject { Lipisha::TransactionStatus.new({
     transaction: 'ABCI23564'
     })
   }
@@ -26,7 +26,7 @@ describe Lipisha::ConfirmTransaction do
       end
     end
 
-    subject do Lipisha::ConfirmTransaction.new({
+    subject do Lipisha::TransactionStatus.new({
       transaction: 'ABCI23564'
       })
     end
@@ -55,11 +55,11 @@ describe Lipisha::ConfirmTransaction do
         }})
       end
 
-      subject { Lipisha::ConfirmTransaction.new(:transaction => 'ABCI23564') }
-      before { expect(subject.connection).to receive(:post).with(Lipisha::ConfirmTransaction::CALL_URL, subject.to_params).and_return(response) }
+      subject { Lipisha::TransactionStatus.new(:transaction => 'ABCI23564') }
+      before { expect(subject.connection).to receive(:post).with(Lipisha::TransactionStatus::CALL_URL, subject.to_params).and_return(response) }
 
       it 'parses the response and sets accessors' do
-        expect(subject.confirm!).to eql(false)
+        expect(subject.confirmed?).to eql(false)
         expect(subject.status_code).to eql('0200')
         expect(subject.status_description).to eql('description')
       end
@@ -88,11 +88,11 @@ describe Lipisha::ConfirmTransaction do
           }
         }})
       end
-      subject { Lipisha::ConfirmTransaction.new(:transaction => 'ABCI23564') }
-      before { expect(subject.connection).to receive(:post).with(Lipisha::ConfirmTransaction::CALL_URL, subject.to_params).and_return(response) }
+      subject { Lipisha::TransactionStatus.new(:transaction => 'ABCI23564') }
+      before { expect(subject.connection).to receive(:post).with(Lipisha::TransactionStatus::CALL_URL, subject.to_params).and_return(response) }
 
       it 'parses the response and sets accessors' do
-        expect(subject.confirm!).to eql(true)
+        expect(subject.confirmed?).to eql(true)
         expect(subject.status_code).to eql('0000')
         expect(subject.status_description).to eql('description')
         expect(subject.transaction_reference).to eql('ABCI23564')

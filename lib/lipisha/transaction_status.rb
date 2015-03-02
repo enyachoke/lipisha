@@ -1,5 +1,5 @@
 module Lipisha
-  class ConfirmTransaction
+  class TransactionStatus
     CALL_URL = 'https://www.lipisha.com/payments/accounts/index.php/v2/api/confirm_transaction'
 
     attr_accessor :transaction
@@ -10,7 +10,7 @@ module Lipisha
       @transaction = args[:transaction]
     end
 
-    def confirm!
+    def confirmed?
       self.response_body = connection.post(CALL_URL, self.to_params).body
       self.response      = JSON.parse(self.response_body)
       status                  = response['status'] || {}
